@@ -1,0 +1,89 @@
+@import "tailwindcss";
+
+/*
+  Design tokens. Figma values go here; components only use these names
+  (as CSS variables or as the Tailwind classes mapped in @theme below).
+*/
+:root {
+  /* brand */
+  --primary: #d63d32; /* buttons (darker than coral for text contrast) */
+  --coral: #ff5a4f; /* logo, accents */
+  --must: #f2b84b; /* must-have gold */
+  --like: #2fa66a; /* like green */
+  --skip: #8a919c; /* skip gray */
+
+  /* surfaces and text */
+  --bg: #fbfbf8;
+  --surface: #ffffff;
+  --fg: #1a1a1a;
+  --muted: #656972;
+  --line: #e4e2da;
+  --on-primary: #ffffff;
+
+  /* shape and spacing (8px grid) */
+  --radius-card: 16px;
+  --radius-swipe: 24px;
+  --space: 8px;
+  --action-bar: 56px; /* bottom action bar minimum height */
+
+  --font: var(--font-dm-sans), system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #17171b;
+    --surface: #222228;
+    --fg: #f4f2ee;
+    --muted: #a3a7af;
+    --line: #32323a;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #17171b;
+  --surface: #222228;
+  --fg: #f4f2ee;
+  --muted: #a3a7af;
+  --line: #32323a;
+  color-scheme: dark;
+}
+
+@theme inline {
+  --color-primary: var(--primary);
+  --color-coral: var(--coral);
+  --color-must: var(--must);
+  --color-like: var(--like);
+  --color-skip: var(--skip);
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-fg: var(--fg);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-on-primary: var(--on-primary);
+  --radius-card: var(--radius-card);
+  --radius-swipe: var(--radius-swipe);
+  --spacing: 4px; /* Tailwind steps: p-2 = 8px, p-4 = 16px, ... */
+  --font-sans: var(--font);
+}
+
+html,
+body {
+  height: 100%;
+}
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font);
+  -webkit-font-smoothing: antialiased;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
